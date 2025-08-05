@@ -148,6 +148,28 @@ Page({
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/text.html
 
+### button 组件 {#button-component}
+
+小程序官方按钮组件 `button` 提供了一下预设的样式。
+
+- `type` 可以取值 `default`、`primary`、`warn`、`mini`
+- `size` 可以取值 `default`、`mini`
+- `plain` 表示是否为镂空按钮
+
+```html
+<button size="mini" type="default">按钮文本</button>
+<button size="mini" type="warn">按钮文本</button>
+<button size="mini" type="primary" plain>按钮文本</button>
+```
+
+::: tip 温馨提示
+在小程序开发中，取值为 `true` 或 `false`的属性，如果取值为 `true` 时一般只需要写属性名即可，不需要写属性值。
+
+比如 `<button plain></button>` 而不建议写成 `<button plain="{{true}}"></button>`，因为它们的效果是一样的。
+:::
+
+官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/button.html
+
 ### navigator 组件 {#navigator-component}
 
 小程序中的 `navigator` 组件用于创建一个链接，用于跳转到其他页面。
