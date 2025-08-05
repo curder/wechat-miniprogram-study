@@ -131,3 +131,10 @@
    ::: tip
    其中 `app.js` 和 `app.wxml` 是必须包含的。
    :::
+
+3. 其他文件
+
+   - `project.config.json` 开发者工具默认配置
+   - `project.private.config.json` 开发者工具用户配置
+   - `sitemap.json` 微信收录页面，用于搜索，小程序上线后，搜索关键字就可以搜索到我们的小程序
+   - `utils\utils.js` 工具函数文件，用于编写一些常用的函数，比如日期格式化、金额格式化等
