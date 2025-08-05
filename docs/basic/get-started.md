@@ -200,9 +200,32 @@ Page({
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/icon.html
 
+### swiper 组件 {#swiper-component}
+
+`swiper` 组件用于创建一个轮播图，它的字组件必须是 `swiper-item` 组件。
+
+常使用的属性包括：
+
+- `autoplay` 属性表示是否自动播放
+- `indicator-dots` 属性表示是否显示指示点
+- `circular` 属性表示是否循环播放
+- `interval` 属性表示自动播放的间隔时间
+
+[`swiper-item` 组件](https://developers.weixin.qq.com/miniprogram/dev/component/swiper-item.html)用于创建轮播图中的每一项。
+
+```html
+<swiper autoplay indicator-dots circular interval="3000">
+  <swiper-item>1</swiper-item>
+  <swiper-item>2</swiper-item>
+  <swiper-item>3</swiper-item>
+</swiper>
+```
+
+官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html
+
 ## 尺寸单位 `rpx` {#size-unit}
 
-在 web 开发中，尺寸单位一般采用 `px` 像素值，在小程序开发中，一般采用 `rpx` 单位，`rpx` 单位是小程序开发中常用的尺寸单位，它是相对于屏幕宽度的比例单位。
+在 web 开发中，尺寸单位一般采用 `px` 像素值，在小程序开发中，一般采用 `rpx` 单位，`rpx` 单位是相对于屏幕宽度的比例单位。
 
 ```html
 <view style="width: 750rpx; height: 300rpx; background-color: azure;"></view>
