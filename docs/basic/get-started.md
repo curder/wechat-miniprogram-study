@@ -177,3 +177,48 @@ Page({
 `type` 可以取下面的列表值：`success`, `success_no_circle`, `info`, `warn`, `waiting`, `cancel`, `download`, `search`, `clear`。
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/icon.html
+
+## 尺寸单位 `rpx` {#size-unit}
+
+在 web 开发中，尺寸单位一般采用 `px` 像素值，在小程序开发中，一般采用 `rpx` 单位，`rpx` 单位是小程序开发中常用的尺寸单位，它是相对于屏幕宽度的比例单位。
+
+```html
+<view style="width: 750rpx; height: 300rpx; background-color: azure;"></view>
+```
+
+:::tip 注意
+宽度 `750rpx` 则占据屏幕宽度的 100%。
+:::
+
+## 样式 {#style}
+
+微信小程序中包含全局样式 `app.wxss` 、局部页面样式 `page.wxss`和局部组件样式 `component.wxss`。
+
+::: tip 注意
+样式一般写在 `wxss` 文件中，一般不直接写在 `style` 中。
+:::
+
+### 全局样式 {#app-wxss}
+
+全局样式 `app.wxss` 定义了全局的样式，所有页面都生效。
+
+:::code-group
+
+```css
+/* 使用类选择器选择组件 */
+.container {
+  width: 750rpx;
+  height: 350rpx;
+  background-color: azure;
+}
+```
+
+```html
+<view class="container"></view>
+```
+
+:::
+
+### 局部页面样式 {#page-wxss}
+
+局部页面样式 `page.wxss` 定义了当前页面的样式，只在当前页面生效。
