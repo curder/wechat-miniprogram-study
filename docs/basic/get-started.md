@@ -138,6 +138,16 @@ Page({
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/view.html
 
+### text 组件 {#text-component}
+
+小程序中的 `text` 组件用于创建一个文本元素，用于显示文本内容。
+
+```html
+<text>Hello World</text>
+```
+
+官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/text.html
+
 ### navigator 组件 {#navigator-component}
 
 小程序中的 `navigator` 组件用于创建一个链接，用于跳转到其他页面。
@@ -149,16 +159,6 @@ Page({
 ```
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html
-
-### text 组件 {#text-component}
-
-小程序中的 `text` 组件用于创建一个文本元素，用于显示文本内容。
-
-```html
-<text>Hello World</text>
-```
-
-官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/text.html
 
 ### image 组件 {#image-component}
 
