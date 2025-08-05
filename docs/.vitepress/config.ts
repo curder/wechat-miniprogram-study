@@ -40,12 +40,18 @@ export default defineConfig({
 
 function nav() {
   return [
-    //
+    {
+      text: "基础",
+      link: "/basic/overview",
+    },
   ];
 }
 
 function sidebarBasic() {
   return [
-    //
+    {
+      text: "概述",
+      link: "/basic/overview",
+    },
   ];
 }
