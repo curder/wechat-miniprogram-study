@@ -9,7 +9,7 @@
 在微信中下拉搜索或扫描二维码即可打开小程序。
 
 ::: details 点击查看微信小程序列表
-![](./images/overview/wechat-mini-program-list.PNG)
+![](images/overview/wechat-mini-program-list.jpg)
 :::
 
 ### 注册账号 {#register-account}
@@ -77,7 +77,7 @@
 创建完项目后，在微信开发者工具中，点击“详情” -> “本地设置” -> “项目设置” -> 勾选“不校验请求域名、TLS 版本及 HTTPS 证书”。
 
 :::details 点击查看开启 http 协议的截图
-![](images/overview/local-development-support-http.png)
+![](images/overview/local-development-support-http.jpg)
 :::
 
 ## 项目目录 {#project-directories}
