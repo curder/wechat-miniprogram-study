@@ -49,9 +49,7 @@ function nav() {
 
 function sidebarBasic() {
   return [
-    {
-      text: "概述",
-      link: "/basic/overview",
-    },
+    { text: "概述", link: "/basic/overview" },
+    { text: "快速上手", link: "/basic/get-started" },
   ];
 }
