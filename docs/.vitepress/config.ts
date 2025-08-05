@@ -40,10 +40,8 @@ export default defineConfig({
 
 function nav() {
   return [
-    {
-      text: "基础",
-      link: "/basic/overview",
-    },
+    { text: "基础", link: "/basic/overview" },
+    { text: "技巧", link: "/tips/import-icon-library" },
   ];
 }
 
