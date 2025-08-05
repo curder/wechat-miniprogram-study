@@ -1,0 +1,19 @@
+{
+  "name": "wechat-miniprogram-study",
+  "description": "WeChat Mini Program Learning Project",
+  "repository": "https://github.com/curder/wechat-miniprogram-study.git",
+  "author": "curder <q.curder@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">= 22"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
