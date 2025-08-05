@@ -79,3 +79,55 @@
 :::details 点击查看开启 http 协议的截图
 ![](images/overview/local-development-support-http.png)
 :::
+
+## 项目目录 {#project-directories}
+
+下面是一个基础的 JS 项目目录结构：
+
+```text
+.
+├── app.js
+├── app.json
+├── app.wxss
+├── pages
+│   ├── index
+│   │   ├── index.js
+│   │   ├── index.json
+│   │   ├── index.wxml
+│   │   └── index.wxss
+│   └── logs
+│       ├── logs.js
+│       ├── logs.json
+│       ├── logs.wxml
+│       └── logs.wxss
+├── project.config.json
+├── project.private.config.json
+├── sitemap.json
+└── utils
+    └── util.js
+```
+
+1. 项目主配置文件
+
+   在项目根路径下，控制整个项目。
+
+   - `app.js` 小程序入口文件，小程序启动会执行这个 JS 文件
+   - `app.json` 小程序的全局配置，比如顶部颜色，顶部标题等
+   - `app.wxss` 小程序全局样式，编写的样式全局生效
+
+   ::: tip
+   其中 `app.js` 和 `app.json` 是必须包含的。
+   :::
+
+2. 项目页面文件
+
+   在 `pages` 目录下，每个页面都是一个文件夹，文件夹下包含一个 `.js` 文件、`.json`文件、`.wxml`文件和一个 `.wxss` 文件。
+
+   - `.js` 文件：页面的逻辑文件，类似 JS 文件
+   - `.json` 文件：页面的配置文件，比如页面的标题、导航栏等
+   - `.wxml` 文件：页面的结构文件，类似 HTML 文件
+   - `.wxss` 文件：页面的样式文件，类似 CSS 文件
+
+   ::: tip
+   其中 `app.js` 和 `app.wxml` 是必须包含的。
+   :::
