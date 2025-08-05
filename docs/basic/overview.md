@@ -193,3 +193,56 @@
 ```
 
 SEO 配置文件 `sitemap.json` 参考配置：https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/sitemap.html
+
+### 新建页面 {#create-new-page}
+
+默认的小程序项目只有一个页面，就是首页。
+
+如果需要新建页面，需要在 `pages` 目录下新建一个文件夹，文件夹的名称就是页面的名称，文件夹下包含一个 `.js` 文件、`.json`文件、`.wxml`文件和一个 `.wxss` 文件。
+
+#### 方式 1 {#create-new-page-way-1}
+
+1. 在 `pages` 目录上点击鼠标右键，选择 `新建文件夹`，比如 `login`
+2. 在新建的文件夹上点击鼠标右键，选择 `新建Page`，比如 `login`
+3. 此时会自动创建 4 个文件，分别是：`login.js`、`login.json`、`login.wxml`和`login.wxss`
+
+#### 方式 2【推荐】 {#create-new-page-way-2}
+
+1. 在项目根目录下的全局配置文件 `app.json` 中的 `pages` 中新增一行，比如 `pages/login/login`
+2. 点击保存，此时会自动创建 `login` 文件夹和页面
+
+### 启动页面调整 {#start-page-adjustment}
+
+修改小程序启动时，首先显示的页面。
+
+#### 方式一【推荐】 {#start-page-adjustment-way-1}
+
+在项目根目录下的全局配置文件 `app.json` 中的 `entryPagePath` 中修改启动页面。
+
+```json
+{
+  "entryPagePath": "pages/login/login" //[!code ++]
+}
+```
+
+#### 方式二 {#start-page-adjustment-way-2}
+
+在项目根目录下的全局配置文件 `app.json` 中如果没有配置 `entryPagePath`，可以在 `pages` 中修改页面顺序，第一个会作为启动页面。
+
+```json
+{
+  "pages": [
+    "pages/login/login", // 登录页 //[!code ++]
+    "pages/index/index" // 首页
+    "pages/login/login" //[!code --]
+  ]
+}
+```
+
+#### 方式三 {#start-page-adjustment-way-3}
+
+使用小程序开发者工具的“添加编译模式”指定启动页面，建议临时使用。
+
+:::details 点击查看通过开发者工具“添加变异模式”指定启动页面
+![](images/overview/add-compilation-mode.jpg)
+:::
