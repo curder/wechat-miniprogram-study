@@ -221,6 +221,44 @@ Page({
 </swiper>
 ```
 
+:::tip 温馨提示
+当 `swiper-item` 组件中包裹的是 `image` 组件，如果需要将图片在宽度上铺满，建议将 `image` 组件的 `width` 属性设置为 `750rpx`，`mode` 设置为 `widthFix`。
+
+```html
+<swiper
+  autoplay
+  indicator-dots
+  indicator-color="white"
+  indicator-active-color="gray"
+  circular
+  interval="3000"
+>
+  <swiper-item>
+    <image
+      style="width: 750rpx;"
+      mode="widthFix"
+      src="/images/banner/banner1.jpeg"
+    />
+  </swiper-item>
+  <swiper-item>
+    <image
+      style="width: 750rpx;"
+      mode="widthFix"
+      src="/images/banner/banner2.jpeg"
+    />
+  </swiper-item>
+  <swiper-item>
+    <image
+      style="width: 750rpx"
+      mode="widthFix"
+      src="/images/banner/banner3.jpeg"
+    />
+  </swiper-item>
+</swiper>
+```
+
+:::
+
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/swiper.html
 
 ## 尺寸单位 `rpx` {#size-unit}
