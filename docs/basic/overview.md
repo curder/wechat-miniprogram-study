@@ -107,34 +107,89 @@
     └── util.js
 ```
 
-1. 项目主配置文件
+### 项目主配置文件 {#project-main-configuration-file}
 
-   在项目根路径下，控制整个项目。
+在项目根路径下，控制整个项目。
 
-   - `app.js` 小程序入口文件，小程序启动会执行这个 JS 文件
-   - `app.json` 小程序的全局配置，比如顶部颜色，顶部标题等
-   - `app.wxss` 小程序全局样式，编写的样式全局生效
+- `app.js` 小程序入口文件，小程序启动会执行这个 JS 文件
+- `app.json` 小程序的全局配置，比如顶部颜色，顶部标题等
+- `app.wxss` 小程序全局样式，编写的样式全局生效
 
-   ::: tip
-   其中 `app.js` 和 `app.json` 是必须包含的。
-   :::
+::: tip
+其中 `app.js` 和 `app.json` 是必须包含的。
+:::
 
-2. 项目页面文件
+#### app.json {#global-app-json}
 
-   在 `pages` 目录下，每个页面都是一个文件夹，文件夹下包含一个 `.js` 文件、`.json`文件、`.wxml`文件和一个 `.wxss` 文件。
+小程序根目录下的 `app.json` 文件用来对微信小程序进行全局配置。
 
-   - `.js` 文件：页面的逻辑文件，类似 JS 文件
-   - `.json` 文件：页面的配置文件，比如页面的标题、导航栏等
-   - `.wxml` 文件：页面的结构文件，类似 HTML 文件
-   - `.wxss` 文件：页面的样式文件，类似 CSS 文件
+用于配置小程序的一些全局属性和页面路由，默认标题，顶部颜色，是否下啦刷新等。
 
-   ::: tip
-   其中 `app.js` 和 `app.wxml` 是必须包含的。
-   :::
+常用配置项：
 
-3. 其他文件
+- `entryPagePath` 小程序默认启动页
+- `pages` 页面路由，用于配置小程序的页面列表
+- `window` 窗口配置，用于配置小程序的窗口属性，比如顶部颜色，顶部标题等
 
-   - `project.config.json` 开发者工具默认配置
-   - `project.private.config.json` 开发者工具用户配置
-   - `sitemap.json` 微信收录页面，用于搜索，小程序上线后，搜索关键字就可以搜索到我们的小程序
-   - `utils\utils.js` 工具函数文件，用于编写一些常用的函数，比如日期格式化、金额格式化等
+全局配置参考地址：https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html
+
+### 项目页面文件 {#project-page-files}
+
+在 `pages` 目录下，每个页面都是一个文件夹，文件夹下包含一个 `.js` 文件、`.json`文件、`.wxml`文件和一个 `.wxss` 文件。
+
+- `.js` 文件：页面的逻辑文件，类似 JS 文件
+- `.json` 文件：页面的配置文件，比如页面的标题、导航栏等
+- `.wxml` 文件：页面的结构文件，类似 HTML 文件
+- `.wxss` 文件：页面的样式文件，类似 CSS 文件
+
+::: tip
+其中 `app.js` 和 `app.wxml` 是必须包含的。
+:::
+
+#### `page.json` {#page-configuration-json}
+
+小程序页面配置文件，也称为局部配置文件，用于配置当前页面的窗口样式、页面标题等。
+
+项目根目录下的 `app.json` 全局配置文件中的部分配置也支持在单个页面进行配置，可以在页面对应的 `.json` 文件来对本页面的表现进行配置。
+
+页面中配置项在当前页面会覆盖根目录下 `app.json` 中相同的配置项。常用配置项：
+
+- `navigationBarBackgroundColor` 导航栏背景颜色，如 #000000
+- `navigationBarTextStyle` 导航栏标题、状态栏颜色，仅支持 black / white
+- `navigationBarTitleText` 导航栏标题文字内容
+
+页面配置文件参考地址：https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html
+
+### 其他文件 {#other-files}
+
+- `project.config.json` 开发者工具默认配置
+- `project.private.config.json` 开发者工具用户配置
+- `sitemap.json` 微信收录页面，用于搜索，小程序上线后，搜索关键字就可以搜索到我们的小程序
+- `utils\utils.js` 工具函数文件，用于编写一些常用的函数，比如日期格式化、金额格式化等
+
+#### 工程配置文件 {#project-configuration-file}
+
+- `project.config.json` 开发者工具默认配置
+- `project.private.config.json` 开发者工具用户配置
+
+::: tip
+`project.private.config.json` 项目私有配置文件中的内容将覆盖 `project.config.json` 中的相同字段。
+:::
+
+工程配置文件参考配置：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html
+
+#### SEO 配置 {#seo-configuration}
+
+```json
+{
+  "desc": "关于本文件的更多信息，请参考文档 https://developers.weixin.qq.com/miniprogram/dev/framework/sitemap.html",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}
+```
+
+SEO 配置文件 `sitemap.json` 参考配置：https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/sitemap.html
