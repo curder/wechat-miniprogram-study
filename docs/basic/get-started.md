@@ -385,3 +385,55 @@ Page({
   <button catch:tap="handleChild" type="primary" plain>事件冒泡</button>
 </view>
 ```
+
+#### 事件传参数 {#event-params}
+
+小程序中事件传参数的方式有两种：
+
+1. 通过 `data-*` 传递参数
+
+   ::: code-group
+
+   ```html
+   // [!code word:data-]
+   <button bind:tap="handleClick" data-type="breakfast" data-id="123">
+     点击我
+   </button>
+   ```
+
+   ```js
+   Page({
+     handleClick(e) {
+       const { id, type } = e.currentTarget.dataset;
+       console.log(id, type); // 123 breakfast
+     },
+   });
+   ```
+
+   :::
+
+2. 通过 `mark:*` 传递参数
+
+   ::: code-group
+
+   ```html
+   // [!code word:mark\:]
+   <button bind:tap="handleClick" mark:type="breakfast" mark:id="123">
+     点击我
+   </button>
+   ```
+
+   ```js
+   Page({
+     handleClick(e) {
+       const { id, type } = e.mark;
+       console.log(id, type); // 123 breakfast
+     },
+   });
+   ```
+
+   :::
+
+   ::: tip 注意
+   `mark` 和 `dataset` 很相似，主要区别在于： `mark` 会包含从触发事件的节点到根节点上所有的 `mark:` 属性值；而 `dataset` 仅包含一个节点的 `data-` 属性值。
+   :::
