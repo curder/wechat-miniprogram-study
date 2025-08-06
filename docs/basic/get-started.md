@@ -586,3 +586,169 @@ Page({
 ```
 
 :::
+
+### 响应式数据 {#responsive-data}
+
+小程序中的数据是响应式的，当数据发生变化时，会自动更新视图。
+
+在 `js` 中使用 `this.setData({key: 变化后的值})` 方法更新数据。
+
+下面以经典的修改数字增加的例子作为演示：
+
+::: code-group
+
+```html
+<view>
+  <button bind:tap="handleCounter" type="primary" plain>增加</button>
+
+  <text>当前计数：{{ counter }}</text>
+</view>
+```
+
+```js
+Page({
+  data: {
+    counter: 0,
+  },
+  handleCounter() {
+    this.setData({
+      counter: this.data.counter + 1,
+    });
+  },
+});
+```
+
+:::
+
+修改对象元素。
+
+::: code-group
+
+```js
+// pages/my/my.js
+Page({
+  data: {
+    user: {
+      hobby: "reading",
+    },
+  },
+
+  handleChangeHobby() {
+    // 方式一：常规方式修改对象
+    // this.setData({
+    //   "user.hobby": "travling"
+    // })
+
+    // 方式二：解构赋值
+    const user = { ...this.data.user, hobby: "travling" };
+    // const user = Object.assign(this.data.user, {hobby: "travling"});
+    this.setData({
+      user,
+    });
+  },
+});
+```
+
+```html
+<button bind:tap="handleChangeHobby">Change Hobby</button>
+
+<text>{{ user.hobby }}</text>
+```
+
+:::
+
+### 循环 `wx:for` {#wx-for}
+
+小程序中使用 `wx:for` 循环渲染数组列表，并使用 `wx:key` 绑定列表项的唯一标识。
+
+其中 `index` 和 `item` 分别表示当前项的索引和当前项的值。
+
+::: code-group
+
+```html
+<view>
+  <button bind:tap="handleAddAnimal">Add animal</button>
+  <text wx:for="{{ animals }}" wx:key="index">{{ item }}</text>
+</view>
+```
+
+```js
+Page({
+  data: {
+    animals: ["Dog", "Cat", "Elephant"],
+  },
+
+  handleAddAnimal() {
+    // 方式一：先追加，再设置
+    this.data.animals.push("Pig");
+    this.setData({
+      animals: this.data.animals,
+    });
+
+    // 方式二：contact
+    const animals = this.data.animals.concat("Pig");
+    this.setData({
+      animals,
+    });
+
+    // 方式三：解构赋值
+    const animals = [...this.data.animals, "Pig"];
+    this.setData({
+      animals,
+    });
+  },
+});
+```
+
+:::
+
+### 条件渲染 `wx:if` {#wx-if}
+
+小程序中使用 `wx:if`、`wx:elif` 和 `wx:else` 进行条件渲染。
+
+::: code-group
+
+```html
+<view>
+  <text wx:if="{{ score >= 80 }}">A++</text>
+  <text wx:elif="{{ score >= 60 && score < 80 }}">A+</text>
+  <text wx:else>A</text>
+</view>
+```
+
+```js
+Page({
+  data: {
+    score: 78,
+  },
+});
+```
+
+:::
+
+小程序中有另外一个指令 `hidden` ，和 `wx:if` 指令的功能类似，但是 `hidden` 指令会将元素渲染到页面中，只是通过 CSS 样式将元素隐藏起来。
+
+::: code-group
+
+```html
+<view>
+  <button bind:tap="toggleText">Toggle</button>
+
+  <text hidden="{{ textActive }}">Hello world</text>
+</view>
+```
+
+```js
+Page({
+  data: {
+    textActive: true,
+  },
+  toggleText() {
+    this.setData({
+      textActive: !this.data.textActive,
+    });
+  },
+});
+```
+
+:::
