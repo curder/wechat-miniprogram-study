@@ -505,3 +505,84 @@ Page({
   },
 });
 ```
+
+## 模版语法 {#template-syntax}
+
+小程序中的模版语法和 Vue 中的模版语法基本一致。
+
+在 `wxml` 文件中使用 2 个大括号包裹变量，在 `js` 文件中的 `data` 中定义变量。
+
+::: code-group
+
+```html
+<view><text>Name：{{ name }}</text></view>
+<view><text>Age：{{ age }}</text></view>
+```
+
+```js
+Page({
+  data: {
+    name: "Steven",
+    age: 18,
+  },
+});
+```
+
+:::
+
+也可以渲染对象。
+
+::: code-group
+
+```html
+<view><text>Name：{{ user.name }}</text></view>
+<view><text>Address: {{ user.address.city }}</text></view>
+<view><text>Hobbies: {{ hobbies }}</text></view>
+
+<view><text>Address: {{ user.address.street }}</text></view>
+```
+
+```js
+Page({
+  data: {
+    user: {
+      name: "Steven",
+      hobbies: ["reading", "traveling"],
+      address: {
+        city: "Shanghai",
+        street: "Nanjing Road",
+      },
+    },
+  },
+});
+```
+
+:::
+
+进行简单的算数运算和逻辑运算
+
+```html
+<view><text>{{ 99 + 1 }}</text></view>
+
+<view><text>{{ 99 >= 1 }}</text></view>
+```
+
+使用三元运算。
+
+::: code-group
+
+```html
+<view>
+  <text> {{ age >= 18 ? "成年人" : "未成年人" }} </text>
+</view>
+```
+
+```js
+Page({
+  data: {
+    age: 18,
+  },
+});
+```
+
+:::
