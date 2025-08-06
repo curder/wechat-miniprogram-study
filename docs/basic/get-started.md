@@ -175,10 +175,18 @@ Page({
 小程序中的 `navigator` 组件用于创建一个链接，用于跳转到其他页面。
 
 ```html
-<navigator url="/pages/my/my">
+<navigator open-type="navigate" url="/pages/my/my">
   <text>跳转到个人中心</text>
 </navigator>
 ```
+
+`open-type` 可以取值 `navigate`、`redirect`、`switchTab`、`reLaunch`、`navigateBack`。
+
+- `navigate` 表示跳转到普通页面，不能跳转到 tabbar 页面
+- `redirect` 表示跳转到普通页面并关闭当前页面，不能跳转到 tabbar 页面
+- `switchTab` 表示跳转到 `tabbar` 页面，并关闭其他非 tabbar 页面
+- `reLaunch` 表示重新启动应用并跳转到普通页面
+- `navigateBack` 关闭当前页面，并返回上一页或多级页
 
 官方文档：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html
 
@@ -437,3 +445,63 @@ Page({
    ::: tip 注意
    `mark` 和 `dataset` 很相似，主要区别在于： `mark` 会包含从触发事件的节点到根节点上所有的 `mark:` 属性值；而 `dataset` 仅包含一个节点的 `data-` 属性值。
    :::
+
+## 页面跳转 {#page-navigate}
+
+在小程序开发中，经常需要实现页面跳转的功能，比如点击按钮跳转到详情页、点击列表项跳转到详情页等。
+
+### 声明式跳转 {#declare-navigate}
+
+声明式跳转是指在 `wxml` 文件中使用 [`navigator` 组件](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)实现跳转。
+
+- 基础方式
+
+  ```html
+  <navigator url="/pages/login/login">登录</navigator>
+  ```
+
+- 跳转时携带参数
+
+  :::code-group
+
+  ```html
+  // [!code word:?name=example]
+  <navigator url="/pages/login/login?name=example">登录</navigator>
+  ```
+
+  ```js
+  // pages/login/login.js
+  Page({
+    onLoad(options) {
+      const { name } = options;
+      console.log(name); // example
+    },
+  });
+  ```
+
+  :::
+
+### 编程式跳转 {#program-navigate}
+
+编程式跳转是指在 `js` 文件中使用 `wx.navigateTo` 方法实现跳转。
+
+```js
+// pages/index/index.js
+Page({
+  handleNavigateTo() {
+    wx.navigateTo({ url: "/pages/login/login" });
+  },
+  handleRedirectTo() {
+    wx.redirectTo({ url: "/pages/login/login" });
+  },
+  handleSwitchTab() {
+    wx.switchTab({ url: "/pages/index/index" });
+  },
+  handleReLaunch() {
+    wx.reLaunch({ url: "/pages/login/login" });
+  },
+  handleNavigateBack() {
+    wx.navigateBack({ delta: 1 });
+  },
+});
+```
