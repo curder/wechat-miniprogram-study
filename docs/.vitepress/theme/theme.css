@@ -1,0 +1,6 @@
+.vp-code .highlighted-word {
+  border: 1px solid var(--vp-c-border);
+  padding: 2px 3px;
+  margin-left: -3px;
+  border-radius: 4px;
+}

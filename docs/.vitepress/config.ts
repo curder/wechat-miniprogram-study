@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-
+import { transformerNotationWordHighlight } from "@shikijs/transformers";
 export default defineConfig({
   lang: "zh-CN",
   base: "/wechat-miniprogram-study/",
@@ -35,6 +35,11 @@ export default defineConfig({
     sidebar: {
       "/basic": sidebarBasic(),
     },
+  },
+  markdown: {
+    codeTransformers: [
+      transformerNotationWordHighlight({ matchAlgorithm: "v3" }),
+    ],
   },
 });
 
