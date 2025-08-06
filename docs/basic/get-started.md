@@ -305,3 +305,83 @@ Page({
 ### 局部页面样式 {#page-wxss}
 
 局部页面样式 `page.wxss` 定义了当前页面的样式，只在当前页面生效。
+
+## 事件绑定 {#event-binding}
+
+在小程序开发中，经常遇到需要绑定[事件](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html)的情况，比如点击事件、输入事件、触摸事件等。
+
+### 点击事件 {#click-event}
+
+#### 基本使用 {#event-basic-usage}
+
+点击事件 `bind:tap` 用于绑定点击事件，当用户点击组件时触发。
+
+::: code-group
+
+```wxml [wxml文件]
+// [!code word:bind\:tap]
+<!--pages/index/index.wxml-->
+<button bind:tap="handleClick">点击我</button>
+```
+
+```js [js文件]
+// pages/index/index.js
+Page({
+  handleClick() {
+    console.log("点击了组件");
+  },
+});
+```
+
+:::
+
+1. `bind:tap` 可以在任何组件上使用，比如 `view`、`button`、`text`等。
+2. `bind:tap` 事件绑定也可以简写成 `bindtap`。
+
+::: tip 注意
+在小程序开发中，事件绑定的函数必须在 `Page` 实例中定义。
+:::
+
+#### 事件冒泡 {#event-bubble}
+
+事件冒泡是指事件从子元素向父元素传递的过程。
+
+:::code-group
+
+```html [wxml文件]
+// [!code word:bind\:tap]
+<view
+  bind:tap="handleParent"
+  style="height: 400rpx; width: 750rpx; background-color: floralwhite; display: flex; align-items: center;"
+>
+  <button bind:tap="handleChild" type="primary" plain>事件冒泡</button>
+</view>
+```
+
+```js [JS文件]
+// pages/my/my.js
+Page({
+  handleParent() {
+    console.log("Parent clicked!");
+  },
+  handleChild() {
+    console.log("Child clicked!");
+  },
+});
+```
+
+:::
+
+上述案例中，点击按钮 `事件冒泡` 会先触发 `handleChild` 函数，然后触发 `handleParent` 函数。
+
+要阻止事件冒泡可以使用 **`catch:tap`** 绑定事件，**`catch`** 会阻止事件向上冒泡。
+
+```html [wxml文件]
+// [!code word:catch\:tap]
+<view
+  bind:tap="handleParent"
+  style="height: 400rpx; width: 750rpx; background-color: floralwhite; display: flex; align-items: center;"
+>
+  <button catch:tap="handleChild" type="primary" plain>事件冒泡</button>
+</view>
+```
