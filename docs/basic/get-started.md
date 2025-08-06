@@ -752,3 +752,82 @@ Page({
 ```
 
 :::
+
+## 网络请求 `wx:request` {#wx-request}
+
+小程序中使用 [`wx:request`](https://developers.weixin.qq.com/miniprogram/dev/api/network/request/wx.request.html) 进行网络请求。
+
+使用`wx:request`时的对象参数包括：
+
+- `url` 为请求的地址
+- `method` 为请求的方法，比如常见的 `GET`、`POST`
+- `data` 为请求的参数，`GET` 请求时会将参数拼接在 URL 中，`POST` 请求时会将参数放在请求体中
+- `header` 为请求的头信息，比如 `Accept`、`Content-Type` 等
+- `success` 为请求成功的回调函数，参数为请求成功的响应数据
+- `fail` 为请求失败的回调函数，参数为请求失败的错误信息
+- `complete` 为请求完成的回调函数，无论请求成功还是失败都会调用，参数为请求的配置对象
+
+::: code-group
+
+```js
+Page({
+  handleRequest() {
+    wx.request({
+      url: "https://www.baidu.com",
+      method: "GET",
+      data: {},
+      header: {},
+      success: (res) => {
+        console.log(res);
+      },
+      fail: (error) => {},
+      complete: () => {},
+    });
+  },
+});
+```
+
+```html
+<view>
+  <button bind:tap="handleRequest">Request</button>
+</view>
+```
+
+:::
+
+### wx:showLoading 加载提示框 {#wx-show-loading}
+
+小程序中使用 [`wx:showLoading`](https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showLoading.html) 显示加载提示框。
+
+::: code-group
+
+```js {3-6,17}
+Page({
+  handleRequest() {
+    wx.showLoading({
+      title: "数据加载中",
+      mask: true,
+    });
+    wx.request({
+      url: "https://www.baidu.com",
+      method: "GET",
+      data: {},
+      header: {},
+      success: (res) => {
+        console.log(res);
+      },
+      fail: (error) => {},
+      complete: () => {
+        wx.hideLoading();
+      },
+    });
+  },
+});
+```
+
+```html
+<view>
+  <button bind:tap="handleRequest">Request</button>
+</view>
+```
+:::
